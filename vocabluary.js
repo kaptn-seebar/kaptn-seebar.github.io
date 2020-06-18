@@ -25,8 +25,8 @@ function appRow() {
 var old = el("select").children[1].children[2];
 old.parentElement.appendChild(old.cloneNode(true));
 }
-function tabButton(x) {elem(x,1).innerHTML ='<span ondblclick="window.top.liaGoto(112);"> </span><button onclick="document.getElementById(&quot;callName&quot;).innerText = &quot;pick&quot;;document.getElementById(&quot;selVal&quot;).innerText =' + (x - 2).toString() + ';
-eval(document.getElementById(&quot;scri&quot;).innerText)"><span ondblclick="window.top.liaGoto(112);">Select</span></button><span ondblclick="window.top.liaGoto(112);">      </span>'}
+//function tabButton(x) {elem(x,1).innerHTML ='<span ondblclick="window.top.liaGoto(112);"> </span><button onclick="document.getElementById(&quot;callName&quot;).innerText = &quot;pick&quot;;document.getElementById(&quot;selVal&quot;).innerText =' + (x - 2).toString() + ';
+//eval(document.getElementById(&quot;scri&quot;).innerText)"><span ondblclick="window.top.liaGoto(112);">Select</span></button><span ondblclick="window.top.liaGoto(112);">      </span>'}
 
 function len() {return el("select").children[1].children.length}
 function initTab() {var l = len();
