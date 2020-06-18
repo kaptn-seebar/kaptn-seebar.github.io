@@ -1,4 +1,3 @@
-setup();
 var re;
 var a;
 function el(name) {return document.getElementById(name)}
