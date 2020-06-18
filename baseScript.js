@@ -1,3 +1,4 @@
+var divs;
 function setupButtons (names) {
     names.forEach(name => {
         let obj = document.getElementById(name);
@@ -11,8 +12,10 @@ let callObj = el("callName");
 if (callObj != null) {
 eval(callObj.innerText + "()")}}
 
+function setupDivs(inDivs)  {divs = inDivs;}
+
 function show(secname) {
-    var snames = ["start", "select", "enter", "endes", "comp", "last", "custom"];
+    var snames = divs;
     var i;
     for(i = 0; i < snames.length; i++) {
     var name = snames[i]; hide(name)}
