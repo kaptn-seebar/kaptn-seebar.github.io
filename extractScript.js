@@ -1,12 +1,11 @@
 var re;
 var a;
+var baselink = "https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/19037945856/CourseNode/100794278913950/wiki/Index";
 function el(name) {return document.getElementById(name)}
 
-function setup() {el("inp").value = "https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/19037945856/CourseNode/100794278913950/wiki/Index"}
-function output(something) {el("content").innerText = something}
+function output(something) {el("output").innerText = something}
 
 var ret;
-function wait() {while(el("content").innerText == "Extracting..."){}}
 function extract() {
     steal();
 }
@@ -21,7 +20,7 @@ function steal() {
         draw();
     }
     var pref = "https://cors-anywhere.herokuapp.com/";
-    xhr.open("GET", pref + el("inp").value);
+    xhr.open("GET", pref + baselink);
     xhr.responseType = "document";
     xhr.send();
 
@@ -51,7 +50,7 @@ function selArray() {
 
 function draw() {
     for (i = 0; i < a.length ; i++) {
-        var m = el("output");
+        var m = el("list");
         insertRow(m, i);}
 }
 function getTitle(i) {return a[i].innerText}
@@ -108,4 +107,3 @@ function pageAna(i) {
     return ps[1].innerHTML;
     else return "not available"
 }
-function test() {window.alert("testtesttest")}
