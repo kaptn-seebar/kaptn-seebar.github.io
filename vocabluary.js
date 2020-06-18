@@ -35,3 +35,5 @@ for(var i = 2; i < l; i++) {tabButton(i);
 names[i - 2] = "'a " + elem(i, 0).innerText + "'";
 sve("names", "[" + names.toString() + "]");}
 }
+
+function ext() {extract()}
