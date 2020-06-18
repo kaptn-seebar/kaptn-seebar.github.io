@@ -3,7 +3,7 @@ function setupButtons (names) {
         let obj = document.getElementById(name);
         if (obj != null) {
         obj.onclick = function(){};
-        obj.setAttribute('onclick', 'document.getElementById("callName").innerText = "' + name + '"; eval(document.getElementById("scri").innerText)');}});
+        obj.setAttribute('onclick', name + "()");}});
 }
 
 function callName() {
