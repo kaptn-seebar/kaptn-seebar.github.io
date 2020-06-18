@@ -33,4 +33,5 @@ function initTab() {var l = len();
 var names = new Array(l - 2);
 for(var i = 2; i < l; i++) {tabButton(i);
 names[i - 2] = "'a " + elem(i, 0).innerText + "'";
-sve("names", "[" + names.toString() + "]");
+sve("names", "[" + names.toString() + "]");}
+}
