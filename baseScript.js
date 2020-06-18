@@ -5,6 +5,7 @@ function setupButtons (names) {
         obj.onclick = function(){};
         obj.setAttribute('onclick', name + "()");}});
 }
+function startb() {show("select"); unhide("restart"); initTab(); appRow()}
 
 function callName() {
 let callObj = el("callName");
