@@ -46,7 +46,7 @@ function selArray() {
     {
         var str = getRawTitle(i);
         if (str == "Discussion") dis = i;
-        if (str == "Pages") dap = i;
+        if (str == "«") dap = i;
     }
     var newa = new Array(1);
     var j = 0;
