@@ -35,7 +35,6 @@ function spit() {window.alert("f")}
 function analyse() 
 {
     a = re.getElementsByTagName("a");
-    window.alert(a.length);
     selArray();
 }
 function selArray() {
