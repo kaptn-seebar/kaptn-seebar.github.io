@@ -1,4 +1,14 @@
 <!--
+author:   Daniel Hoffmann
+
+email:    LiaScript@web.de
+
+version:  0.0.1
+
+language: en
+
+narrator: US English Female
+
 @insc
 <script>
         //all buttons shall be initialised
@@ -80,6 +90,5 @@ cont();
     Example texts: Bachelor students of University Freiberg<br>
     Concept: Dr. Jacob
 </div>
-@insc
 @end
 -->
