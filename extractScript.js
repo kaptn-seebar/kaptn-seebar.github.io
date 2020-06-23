@@ -4,7 +4,7 @@ var baselink;
 var sourcelink;
 var drawn = false;
 function setBaseLink(bl) {baselink = bl}
-function setSource(srce) {sourcelink = "http://localhost:8080/home/kaptn_seebar/kaptn-seebar.github.io/" + srce}
+function setSource(srce) {sourcelink = "https://kaptn-seebar.github.io/" + srce}
 function output(something) {//el("output").innerText = something
 }
 
@@ -24,7 +24,7 @@ function steal() {
         hide("wait");
     }
     var pref = "https://cors-anywhere.herokuapp.com/";
-    xhr.open("GET", sourcelink);
+    xhr.open("GET", pref + sourcelink);
     xhr.responseType = "document";
     xhr.send();
 
