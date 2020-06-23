@@ -66,8 +66,7 @@ function draw() {
         var m = el("list");
         insertRow(m, i);}
 }
-function getTitle(i) {//return a[i].children[0].innerHTML
-                        return getRawTitle(i)}
+function getTitle(i) {return a[i].children[0].innerHTML}
 function getRawTitle(i) {return a[i].innerText}
 function getLink(i) {return baselink + getTitle(i)}
 
