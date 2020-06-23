@@ -52,8 +52,7 @@ function selArray() {
     var j = 0;
     for (i = dis + 1; i < dap; i++)
     {
-        //if (getLink(i).search("Special") == -1) {
-        if (true) {
+        if (getLink(i).search("Special") == -1) {
         newa[j] = a[i];
         j++; newa.push(a[0])}
     }
@@ -67,7 +66,8 @@ function draw() {
         var m = el("list");
         insertRow(m, i);}
 }
-function getTitle(i) {return a[i].children[0].innerHTML}
+function getTitle(i) {//return a[i].children[0].innerHTML
+                        return getRawTitle(i)}
 function getRawTitle(i) {return a[i].innerText}
 function getLink(i) {return baselink + getTitle(i)}
 
