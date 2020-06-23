@@ -52,15 +52,15 @@ function selArray() {
     var j = 0;
     for (i = dis + 1; i < dap; i++)
     {
-        if (getLink(i).search("Special") == -1 && exclude("Vocabulary") &&exclude("Index")) {
+        if (getLink(i).search("Special") == -1 && exclude("Vocabulary", i) &&exclude("Index", i)) {
         newa[j] = a[i];
         j++; newa.push(a[0])}
     }
     newa.pop();
     a = newa;
 }
-function exclude(name) {return (getTitle(i).search(name) == -1)}
 
+function exclude(name, i) {return (getTitle(i).search(name) == -1)}
 function draw() {
     for (i = 0; i < a.length ; i++) {
         var m = el("list");
