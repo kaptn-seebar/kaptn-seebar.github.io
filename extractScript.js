@@ -3,6 +3,7 @@ var a;
 var baselink;
 var sourcelink;
 var drawn = false;
+function notDrawn() {drawn = false}
 function setBaseLink(bl) {baselink = "https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/19037945856/CourseNode/" + bl + "/wiki/"}
 function setSource(srce) {sourcelink = "https://kaptn-seebar.github.io/" + srce}
 function output(something) {//el("output").innerText = something

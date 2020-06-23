@@ -14,6 +14,7 @@ narrator: US English Female
         //all buttons shall be initialised
     setupButtons(["startb", "restb","pickcustom", "rep", "edit", "finish", "test", "back", "custfin", "ext"]);
 setupDivs(["start", "select", "enter", "endes", "comp", "last", "custom"]);
+notDrawn();
 </script>
 @end
 
