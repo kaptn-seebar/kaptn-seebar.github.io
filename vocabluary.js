@@ -5,7 +5,7 @@ function startb() {show("select"); unhide("restart")}
 function restb() {show("start"); hide("restart")}
 
 function pickcustom() {txtId = "none";
-sve("termname", "a " + el("inp").value);
+sve("termname", el("inp").value);
 show("enter"); unhide("endes");}
 
 function pick(index) {
