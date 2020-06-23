@@ -7,10 +7,6 @@ function setupButtons (names) {
         obj.setAttribute('onclick', name + "()");}});
 }
 
-function callName() {
-let callObj = el("callName");
-if (callObj != null) {
-eval(callObj.innerText + "()")}}
 
 function setupDivs(inDivs)  {divs = inDivs;}
 
@@ -42,5 +38,5 @@ function sel(basename, index, count) {
             unhide(str);} else {hide(str)}}}
     
 function ae(array, index) {return array[index]}
-function extract(name) {return el(name).children[0].children[0].children[0].children[1].children[3].innerText}
+function extrac(name) {return el(name).children[0].children[0].children[0].children[1].children[3].innerText}
     

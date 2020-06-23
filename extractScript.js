@@ -1,9 +1,12 @@
 var re;
 var a;
-var baselink = "https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/19037945856/CourseNode/100794278913950/wiki/Index";
-function el(name) {return document.getElementById(name)}
-
-function output(something) {el("output").innerText = something}
+var baselink;
+var sourcelink;
+var drawn = false;
+function setBaseLink(bl) {baselink = bl}
+function setSource(srce) {sourcelink = "http://localhost:8080/home/kaptn_seebar/kaptn-seebar.github.io/" + srce}
+function output(something) {//el("output").innerText = something
+}
 
 var ret;
 function extract() {
@@ -17,10 +20,11 @@ function steal() {
         re = this.responseXML.body;
         output("Complete.");
         analyse();
-        draw();
+        drawTable();
+        hide("wait");
     }
     var pref = "https://cors-anywhere.herokuapp.com/";
-    xhr.open("GET", pref + baselink);
+    xhr.open("GET", sourcelink);
     xhr.responseType = "document";
     xhr.send();
 
@@ -30,20 +34,28 @@ function spit() {window.alert("f")}
 function analyse() 
 {
     a = re.getElementsByTagName("a");
+    window.alert(a.length);
     selArray();
 }
 function selArray() {
     //looks for the keywords "Discussion" and "Data privacy" and crops the array a accordingly
-    var dis;
+    var dis = 0;
     var dap = 0;
     for (var i = 0; dap == 0; i++)
     {
-        var str = getTitle(i);
+        var str = getRawTitle(i);
         if (str == "Discussion") dis = i;
-        if (str == "Data privacy") dap = i;
+        if (str == "«") dap = i;
     }
-    var newa = new Array(dap - dis -1);
-    for (i = dis + 1; i < dap; i++) newa[i - dis - 1] = a[i];
+    var newa = new Array(1);
+    var j = 0;
+    for (i = dis + 1; i < dap; i++)
+    {
+        if (getLink(i).search("Special") == -1) {
+        newa[j] = a[i];
+        j++; newa.push(a[0])}
+    }
+    newa.pop();
     a = newa;
 }
 
@@ -53,52 +65,32 @@ function draw() {
         var m = el("list");
         insertRow(m, i);}
 }
-function getTitle(i) {return a[i].innerText}
-function getLink(i) {return a[i].href.replace("cors-anywhere.herokuapp.com", "bildungsportal.sachsen.de")}
+function getTitle(i) {return a[i].children[0].innerHTML}
+function getRawTitle(i) {return a[i].innerText}
+function getLink(i) {return baselink + getTitle(i)}
 
 
 function mk(tagname) {return document.createElement(tagname)}
 function txt(text) {return document.createTextNode(text)}
 
-function insertRow(m, i)
-{
-    //create new row.
-    var row = mk("p");
-    //make a bold entity
-    var bold = mk("b");
-    var title = txt(getTitle(i));
-    bold.appendChild(title);
-    var space = txt("      ");
-    var linko = txt(getLink(i));
-    var br = mk("br");
-    var cont = mk("div");
-    //extract the page data
-    {
+
+function pageEx(i){
         output("Extracting Pages...");
         var xhr = new XMLHttpRequest();
         var link = getLink(i);
         xhr.onload = function() {
             page = this.responseXML.body;
             //finish the row
-            cont. innerHTML = page.getElementsByTagName("p")[1].parentElement.innerHTML;
-            cont.children[0].style.display = "none";
+            var cont = el("ex");
+            //cont.innerHTML = page.innerText;
+            cont. innerHTML = page.getElementsByTagName("h3")[3].parentElement.innerHTML;
             if (cont.innerText.search("Vocabulary") != -1) cont.innerHTML ="not defined";
-            if (link.search("Special") != -1) cont.innerHTML ="not present";
-            row.appendChild(bold);
-            row.appendChild(space);
-            row.appendChild(linko);
-            row.appendChild(br);
-            row.appendChild(cont);
-            row.appendChild(br);
-            row.appendChild(br);
-            m.appendChild(row);
         }
         var pref = "https://cors-anywhere.herokuapp.com/";
         xhr.open("GET", pref + link);
         xhr.responseType = "document";
         xhr.send();
     }
-}
 
 
 function pageAna(i) {
@@ -107,3 +99,25 @@ function pageAna(i) {
     return ps[1].innerHTML;
     else return "not available"
 }
+
+function drawTable() {
+    if (drawn) return;
+    var p = len();
+    for (var i = 0; i < a.length; i++)
+    {
+        appRow();
+        elem(p, 0).innerText = getTitle(i);
+        tabButton(p, 'choose(' + i.toString() + ')');
+        p++;
+    }
+    drawn = true;
+}
+
+
+
+function getPage() {
+    var x = el("frame");
+    var y = (x.contentWindow || x.contentDocument);
+    if (y.document)y = y.document;
+    window.alert(y.body.getElementsByTagName("a").length);
+  }
