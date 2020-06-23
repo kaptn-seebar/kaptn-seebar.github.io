@@ -52,7 +52,8 @@ function selArray() {
     var j = 0;
     for (i = dis + 1; i < dap; i++)
     {
-        if (getLink(i).search("Special") == -1) {
+        //if (getLink(i).search("Special") == -1) {
+        if (true) {
         newa[j] = a[i];
         j++; newa.push(a[0])}
     }
