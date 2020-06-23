@@ -68,7 +68,7 @@ function draw() {
 }
 function getTitle(i) {//return a[i].children[0].innerHTML
                         return getRawTitle(i)}
-function getRawTitle(i) {return a[i].children.length}
+function getRawTitle(i) {return a[i].innerText}
 function getLink(i) {return baselink + getTitle(i)}
 
 
