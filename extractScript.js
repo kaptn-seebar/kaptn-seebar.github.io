@@ -85,12 +85,33 @@ function pageEx(i){
             //cont.innerHTML = page.innerText;
             cont. innerHTML = page.getElementsByTagName("h3")[3].parentElement.innerHTML;
             if (cont.innerText.search("Vocabulary") != -1) cont.innerHTML ="not defined";
+            //adjust the links
+            adjust("a", "href", cont);
+            adjust("img", "src", cont);
         }
         var pref = "https://cors-anywhere.herokuapp.com/";
         xhr.open("GET", pref + link);
         xhr.responseType = "document";
+
         xhr.send();
     }
+
+function adjust(tagname, paramname, cont)
+{
+    var aa = cont.getElementsByTagName(tagname);
+    for (var j = 0; j < aa.length; j++)
+    {
+        var obj = aa[j];
+        var oldstr = obj.getAttribute(paramname);
+        if (tagname != "a" || oldstr.search("http") == -1)
+        obj.setAttribute(paramname, "https://bildungsportal.sachsen.de" +oldstr);
+        obj.removeAttribute("class");
+        obj.removeAttribute("onclick");
+        obj.removeAttribute("rel");
+        obj.setAttribute("target", "_blank");
+        if (tagname == "a" && obj.title.search("http") != -1) obj.href = obj.title; 
+    }
+}
 
 
 function pageAna(i) {

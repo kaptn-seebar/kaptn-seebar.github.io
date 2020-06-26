@@ -88,8 +88,10 @@ cont();
     Click "Restart" to describe another term.<br>
     <br><br>**Credits**<br>
     Repository of useful phrases: <a href="https://www.oxford-royale.com/articles/words-phrases-good-essays/#aId=f4ee043e-0732-4f70-87f4-6dd8f5c0cc03" target="_blank"> Oxford University </a><br>
-    Example texts: Bachelor students of University Freiberg<br>
-    Concept: Dr. Jacob
+    Example texts: Students of University Freiberg<br>
+    Concept: Dr. Jacob<br>
+    LiaScript Markdown: André Dietrich<br>
+    Implementation: Daniel Hoffmann
 </div>
 @end
 -->
