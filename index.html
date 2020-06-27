@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head><title>Content</title></head>
-    <body>I contain valuable information. 
-    
-    
+    <head><title>KapWeb</title>
+    <style>
+        #locator {position: absolute; visibility: visible; left: 00px; top: 00px;
+        z-index: 200;}
+    </style>
+    </head>
+    <body>Welcome to KapWeb! There is nothing here yet!<br>
+    Therefore, here's a moveable image for you to play with!<br>
+    <div id="locator">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Account_creation_-_Your_interest_-_Arts.jpg">
+    </div>
+    <button onclick="move(0, -20)">Up</button><br>
+    <button onclick="move(-20, 0)">Left</button>
+    <button onclick="move(20, 0)">Right</button><br>
+    <button onclick="move(0, 20)">Down</button>
+    <script>
+        //controll the image position
+        var imX = 20;
+        var imY = 300;
+        var base = 10;
+        function move(x, y) {
+            imX = imX + x*base;
+            imY = imY + y*base;
+            setIm();
+        }
+        function setIm() {document.getElementById("locator").style.left = imX.toString() + "px";
+        document.getElementById("locator").style.top = imY.toString() + "px";}
+        setIm();
+    </script>
     </body>
     
 </html>
