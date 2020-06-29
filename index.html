@@ -3,20 +3,28 @@
     <head><title>KapWeb</title>
     <style>
         #locator {position: absolute; visibility: visible; left: 00px; top: 00px;
-        z-index: 200;}
+        z-index: 200;
+        transition: left 1s, top 1s}
     </style>
     </head>
     <body>Welcome to KapWeb! There is nothing here yet!<br>
-    Offline Version: file:///home/kaptn_seebar/kaptn-seebar.github.io/index.html<br>
     Therefore, here's a moveable image for you to play with!<br>
+    Offline Version: file:///home/kaptn_seebar/kaptn-seebar.github.io/index.html<br>
     <div id="locator">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Account_creation_-_Your_interest_-_Arts.jpg">
+    <img src="https://lh3.googleusercontent.com/-xq1FKl06Em8/W8sHoDehv9I/AAAAAAAAA9I/qZsyuXWONEo838JdFYlIChnyGIbvRq15gCEwYBhgLKtQDAL1OcqyKMw5C8ci7mdRyG_D7E3G3hr9dRWIUm7rSE-pV6hpbtwmbj7cJF5MBNYB_GmGLJTsNoJi9H7RrNsZzBkZk8wBp3bDE0Q0tQy-QL6dMeMXv3N5bcUPPlqGt6dycVLd8oM8JNJqSkjIegGs-RcXVTomS-Mv_MsWa5b4OBGRGJwUSOJxNgF2U0BKEvDq_kMN0_nPkxwoQ2UVqp6catQnS_-dfGOjk6IhS2OE6yOmEOT49jxrLNG9hwsLBwiJ9Tak0o8Ut44BLL9leovH25yBEMHtVIapQQ1zHlEFwoX-g3ZDLoC-pmeGFWD6PCBIeNXKy9fmfg2oXiQpuWRfm-JnaRY0AVzA4Xdk6XVUjUyf9KG4tQq_oyf7UKM0xgX4_4xAI7GJC_wRXvj7_KIs1HYd3LAU6wN-FxwOdiot5eE_NF6b-T-0N7kEi7lwB2KDDuYpKxBAHPJ3zUWp-izCtC2cK-KNWYBLLFTGJJfDG137SJ96efmGefygSuQIFnxQ6gFIRgp73G3FZJszBI0uz-7ptp3hc2r61ZnVn4xYTVSXhXCmofGuIBvQAi99kmbxhCKfidtJ7uNGK_r6yuGiVEXg0eaHwNWcjKmrT6D23WrMOlrY2MIrr3PcF/w140-h140-p/81471a3c-9834-42e4-bd85-fe23bb95b694">
     </div>
+    <div id="btns">
     <button onclick="move(0, -20)">Up</button><br>
     <button onclick="move(-20, 0)">Left</button>
     <button onclick="move(20, 0)">Right</button><br>
     <button onclick="move(0, 20)">Down</button>
+    </div><br>
+    <div id="key">
+        <b>Who needs Buttons anyway?</b>
+    </div>
+    <script src="https://kaptn-seebar.github.io/baseScript.js"></script>
     <script>
+        hide("key");
         //controll the image position
         var imX = 20;
         var imY = 300;
@@ -26,9 +34,30 @@
             imY = imY + y*base;
             setIm();
         }
-        function setIm() {document.getElementById("locator").style.left = imX.toString() + "px";
-        document.getElementById("locator").style.top = imY.toString() + "px";}
+        function setIm() {el("locator").style.left = imX.toString() + "px";
+        el("locator").style.top = imY.toString() + "px";}
         setIm();
+        document.addEventListener("keydown", keymove);
+        function keymove(e)
+        {
+            switch(e.code){
+                case "KeyS":
+                    move(0,20);keys();
+                    break;
+                case "KeyD":
+                    move(20,0);keys();
+                    break;
+                case "KeyA":
+                    move(-20,0);keys();
+                    break;
+                case "KeyW":
+                    move(0,-20);keys();
+                    break;
+                default:
+
+            }
+        }
+        function keys() {hide("btns");unhide("key");}
     </script>
     </body>
     
